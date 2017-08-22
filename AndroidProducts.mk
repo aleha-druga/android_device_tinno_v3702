@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_strike.mk
+    $(LOCAL_DIR)/mk_strike.mk
