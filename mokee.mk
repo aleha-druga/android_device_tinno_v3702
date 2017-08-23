@@ -1,4 +1,4 @@
-$(call inherit-product, device/bq/strike/device_strike.mk)
+$(call inherit-product, device/bq/strike/mk_strike.mk)
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/mk/config/common_full_phone.mk)
