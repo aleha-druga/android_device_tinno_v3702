@@ -42,11 +42,21 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.debug:system/etc/bluetooth/bt_stack.conf.debug \
-	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/etc/bluetooth/bt_stack.conf.sqc 
+	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/etc/bluetooth/bt_stack.conf.sqc \
+	$(LOCAL_PATH)/configs/permissions/platform.xml:system/etc/permissions/platform.xml
 
-#  add lib a2dp
-	PRODUCT_COPY_FILES += \
-     	$(LOCAL_PATH)/other/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so
+# add lib a2dp
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/other/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so \
+    $(LOCAL_PATH)/other/bluetooth.default.so:system/lib/hw/bluetooth.default.so \
+    $(LOCAL_PATH)/other/radio.fm.mt6580.so:system/lib/hw/radio.fm.mt6580.so 
+#    $(LOCAL_PATH)/other/audio_policy.default.so:system/lib/hw/audio_policy.default.so
+#    $(LOCAL_PATH)/other/audio_policy.stub.so:system/lib/hw/audio_policy.stub.so
+
+
+/other/audio_policy.default.so
+/other/audio_policy.stub.so
+
      
 # Keyboard layout
 PRODUCT_COPY_FILES += \
