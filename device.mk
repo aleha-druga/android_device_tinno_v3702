@@ -53,10 +53,6 @@ PRODUCT_COPY_FILES += \
 #    $(LOCAL_PATH)/other/audio_policy.default.so:system/lib/hw/audio_policy.default.so
 #    $(LOCAL_PATH)/other/audio_policy.stub.so:system/lib/hw/audio_policy.stub.so
 
-
-/other/audio_policy.default.so
-/other/audio_policy.stub.so
-
      
 # Keyboard layout
 PRODUCT_COPY_FILES += \
