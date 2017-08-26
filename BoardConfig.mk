@@ -1,6 +1,6 @@
 # mt6580 platform boardconfig
 LOCAL_PATH := device/bq/strike
--include vendor/bq/strike/BoardConfigVendor.mk
+-include device/bq/strike/libraries/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 

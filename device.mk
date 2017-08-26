@@ -3,7 +3,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product, device/bq/strike/vendor/copyfiles.mk)
-$(call inherit-product, vendor/bq/strike/strike-vendor-blobs.mk)
+$(call inherit-product, device/bq/strike/libraries/strike-vendor-blobs.mk)
 
 LOCAL_PATH := device/bq/strike
 
@@ -28,6 +28,7 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     tinymix \
     libtinyalsa
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_device.xml:system/etc/audio_device.xml \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
@@ -44,16 +45,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.debug:system/etc/bluetooth/bt_stack.conf.debug \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/etc/bluetooth/bt_stack.conf.sqc \
 	$(LOCAL_PATH)/configs/permissions/platform.xml:system/etc/permissions/platform.xml
-
-# add lib a2dp
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/other/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so \
-    $(LOCAL_PATH)/other/bluetooth.default.so:system/lib/hw/bluetooth.default.so \
-    $(LOCAL_PATH)/other/radio.fm.mt6580.so:system/lib/hw/radio.fm.mt6580.so 
-#    $(LOCAL_PATH)/other/audio_policy.default.so:system/lib/hw/audio_policy.default.so
-#    $(LOCAL_PATH)/other/audio_policy.stub.so:system/lib/hw/audio_policy.stub.so
-
-     
+ 
 # Keyboard layout
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
