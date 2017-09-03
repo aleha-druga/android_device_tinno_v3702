@@ -93,7 +93,7 @@
     <bool name="config_wifi_background_scan_support">true</bool>
     
     <!-- Disable IpReachability monitor -->
-    <bool name="config_wifi_ipreachability_monitor">false</bool>
+    <add-resource type="bool" name="config_wifi_ipreachability_monitor">false</add-resource>
 
     <!-- Wifi DualBand -->
     <bool name="config_wifi_dual_band_support">true</bool>    
@@ -105,10 +105,10 @@
     <bool name="config_intrusiveBatteryLed">true</bool>
 
     <!-- Does the notification LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorNotificationLed">true</bool>
+    <add-resource type="bool" name="config_multiColorNotificationLed">true</add-resource>
 
     <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorBatteryLed">true</bool>
+    <add-resource type="bool" name="config_multiColorBatteryLed">true</add-resource>
 
     <!-- Default color for notification LED is green. -->
     <color name="config_defaultNotificationColor">#ff00ff00</color>
