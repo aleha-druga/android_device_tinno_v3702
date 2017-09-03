@@ -1,4 +1,5 @@
-# ==============================================
-# MTK Policy Rule
-# ============
+allow servicemanager init:file { read };
+allow servicemanager init:dir { search };
+allow servicemanager init:file { open };
+allow servicemanager init:process { getattr };
 

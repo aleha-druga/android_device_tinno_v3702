@@ -1,15 +1,6 @@
-# ==============================================
-# Policy File of /system/bin/guiext-server Executable File
-
-# ==============================================
-# Type Declaration
-# ==============================================
 type guiext-server, domain;
 type guiext-server_exec, exec_type, file_type;
 
-# ==============================================
-# MTK Policy Rule
-# ==============================================
 init_daemon_domain(guiext-server)
 
 # to allocate GraphicBuffer
@@ -29,3 +20,6 @@ allow guiext-server graphics_device:chr_file { open read write ioctl };
 # for CTS
 allow guiext-server platform_app:binder call;
 allow guiext-server app_data_file:file write;
+
+allow init servicemanager:binder { call };
+allow init servicemanager:binder { transfer };
