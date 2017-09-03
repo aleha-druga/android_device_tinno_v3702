@@ -3,7 +3,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product, device/bq/strike/vendor/copyfiles.mk)
-$(call inherit-product, vendor/bq/strike/strike-vendor-blobs.mk)
+$(call inherit-product, device/bq/strike/libraries/strike-vendor-blobs.mk)
 
 LOCAL_PATH := device/bq/strike
 
@@ -42,8 +42,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.debug:system/etc/bluetooth/bt_stack.conf.debug \
-	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/etc/bluetooth/bt_stack.conf.sqc \
-	$(LOCAL_PATH)/configs/permissions/platform.xml:system/etc/permissions/platform.xml
+	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/etc/bluetooth/bt_stack.conf.sqc
 
 # Keyboard layout
 PRODUCT_COPY_FILES += \
@@ -170,7 +169,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml \
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     ro.secure=0 \
     ro.allow.mock.location=1 \
@@ -178,8 +177,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.zygote=zygote64_32 \
     camera.disable_zsl_mode=1 \
     ro.mount.fs=EXT4 \
-    persist.service.acm.enable=0 \
-    persist.sys.usb.config=mtp
+    persist.service.acm.enable=1 \
+    persist.sys.usb.config=mtp,adb \
+    persist.mtk.aee.aed=on
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.android.checkjni=0 \
@@ -227,6 +227,11 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     resize2fs \
     setup_fs
+
+## CM14 mtk symbols
+PRODUCT_PACKAGES += \
+    libmtk_symbols \
+    libmtk_shyms
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
 

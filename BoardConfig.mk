@@ -1,9 +1,9 @@
 # mt6580 platform boardconfig
 LOCAL_PATH := device/bq/strike
--include vendor/bq/strike/BoardConfigVendor.mk
+-include device/bq/strike/libraries/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
+TARGET_SYSTEM_PROP += device/bq/strike/system.prop
 USE_CAMERA_STUB := true
 TARGET_PROVIDES_INIT_RC := true
 
@@ -13,8 +13,6 @@ TARGET_BOARD_PLATFORM := mt6580
 TARGET_NO_BOOTLOADER := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_NO_FACTORYIMAGE := true
-
-TARGET_LDPRELOAD += libxlog.so
 
 # CPU
 TARGET_ARCH := arm
@@ -30,23 +28,40 @@ TARGET_BOOTLOADER_BOARD_NAME := mt6580
 BOARD_HAS_MTK_HARDWARE := true
 MTK_HARDWARE := true
 BOARD_USES_LEGACY_MTK_AV_BLOB := true
-COMMON_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL -DDISABLE_ASHMEM_TRACKING
-COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
+BOARD_GLOBAL_CFLAGS += -DMTK_HARDWARE -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL -DDISABLE_ASHMEM_TRACKING
+BOARD_GLOBAL_CPPFLAGS += -DMTK_HARDWARE
 
 BOARD_CONNECTIVITY_VENDOR := MediaTek
 BOARD_USES_MTK_AUDIO := true
 BOARD_USES_MTK_HARDWARE :=true
 
 ####################### Kernel  ##############################
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32S1,32S1 androidboot.selinux=permissive
-BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --base 0x80000000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --second_offset 0x80f00000 --tags_offset 0x0e000000 --board R09
+BOARD_KERNEL_CMDLINE := \
+    bootopt=64S3,32S1,32S1 \
+    androidboot.selinux=permissive
+
+BOARD_KERNEL_BASE := \
+    0x80000000
+
+BOARD_KERNEL_PAGESIZE := \
+    2048
+
+BOARD_MKBOOTIMG_ARGS := \
+    --base 0x80000000 \
+    --pagesize 2048 \
+    --kernel_offset 0x00008000 \
+    --ramdisk_offset 0x04000000 \
+    --tags_offset 0x0e000000 \
+    --board R09
+
+BOARD_CUSTOM_BOOTIMG := true
+
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 # Hack for build
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
 #################### Source kernel #################################
-#TARGET_KERNEL_SOURCE := device/bq/strike/kernel-3.18.19
+#TARGET_KERNEL_SOURCE := kernel/bq/strike
 #TARGET_KERNEL_CONFIG := v3702_defconfig
 #BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 #TARGET_NO_KERNEL := false
@@ -64,10 +79,10 @@ TARGET_SCREEN_WIDTH := 720
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 # Flags
-TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
+BOARD_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
+BOARD_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
+BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # LightHAL
@@ -128,7 +143,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
@@ -163,13 +178,18 @@ TARGET_USERIMAGES_USE_EXT4 := true
 #TW_BUILD_ZH_CN_SUPPORT := true
 
 # SELinux
-BOARD_SEPOLICY_DIRS := \
-       device/bq/strike/sepolicy
-       
+BOARD_SEPOLICY_DIRS := $(LOCAL_PATH)/sepolicy
+
+# Use old sepolicy version
+POLICYVERS := 29
+
+BLOCK_BASED_OTA := false
+
+TARGET_LDPRELOAD += libxlog.so:libmtk_symbols.so # for symbols in mtkaudio.cpp + mtksymbols
+
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 
-#
-TARGET_LDPRELOAD += libxlog.so:libmtk_symbols.so
+# seccomp
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
 

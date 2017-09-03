@@ -1,6 +1,6 @@
 #
 #
-# system.prop for bq strike
+# system.prop for BQ Strike
 #
 
 rild.libpath=/system/lib/mtk-ril.so
