@@ -15,7 +15,7 @@ on early-init
 
 on init
 	# libshim
-	export LD_SHIM_LIBS "/system/bin/vtservice|libmtk_symbols.so:/system/lib/libmedia.so|libmtk_symbols.so:/system/lib/libvtmal.so|libmtk_symbols.so:/system/bin/program_binary_service|libmtk_symbols.so:/system/lib/libhwui.so|libmtk_symbols.so:/system/bin/xlog|libmtk_symbols.so:/system/lib/libccci_util.so|libmtk_symbols.so:/system/lib/libcutils.so|libmtk_symbols.so:/system/lib/libfs_mgr.so|libmtk_symbols.so:/system/lib/liblog.so|libmtk_symbols.so:/system/lib/libdrmmtkutil.so|libmtk_symbols.so:/system/lib/libicuuc.so|libmtk_symbols.so:/system/lib/libjavacore.so|libmtk_symbols.so:/system/bin/mtk_agpsd|libmtk_symbols.so:/system/lib/libcam.client.so|libmtk_symbols.so:/system/lib/libcam_utils.so|libmtk_symbols.so:/system/lib/libmtk_mmutils.so|libmtk_symbols.so:/system/lib/libMtkOmxVenc.so|libmtk_symbols.so:/system/lib/libstagefright_wfd.so|libmtk_symbols.so:/system/lib/libwebviewchromium_plat_support.so|libmtk_symbols.so:/system/lib/hw/camera.mt6580.so|libmtk_symbols.so:/system/lib/libandroid_runtime.so|libmtk_symbols.so:/system/lib/libcamera_client.so|libmtk_symbols.so:/system/lib/libsource.so|libmtk_symbols.so:/system/lib/libmediaplayerservice.so|libmtk_symbols.so:/system/lib/libwilhelm.so|libmtk_symbols.so:/system/lib/libwilhelm.so|libmtk_symbols.so:/system/lib/libstagefright.so|libmtk_symbols.so:/system/lib/libsink.so|libmtk_symbols.so:/system/lib/libcomutils.so|libmtk_symbols.so:/system/lib/libvie.so|libmtk_symbols.so:/system/lib/libvoicerecognition.so|libmtk_symbols.so"
+	# export LD_SHIM_LIBS "/system/bin/vtservice|libmtk_symbols.so"
 
     # Support legacy paths
     symlink /sdcard /mnt/sdcard

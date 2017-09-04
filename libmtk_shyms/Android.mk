@@ -3,6 +3,7 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
     mtk_cam.cpp \
+    media.c
 
 
 LOCAL_SHARED_LIBRARIES := libdpframework
