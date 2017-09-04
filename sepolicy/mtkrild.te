@@ -1,2 +1,0 @@
-allow ril-daemon-mtk block_device:blk_file { read write };
-allow ril-daemon-mtk block_device:blk_file { open };

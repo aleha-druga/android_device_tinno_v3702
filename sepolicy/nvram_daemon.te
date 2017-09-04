@@ -20,8 +20,8 @@ allow nvram_daemon wmt_prop:property_service set;
 
 #unix_socket_connect(nvram_daemon, property, init)
 
-allow nvram_daemon block_device:blk_file { read write };
-allow nvram_daemon block_device:blk_file { open };
+# allow nvram_daemon block_device:blk_file { read write };
+# allow nvram_daemon block_device:blk_file { open };
 allow nvram_daemon sysfs:file { read };
 allow nvram_daemon sysfs:file { open };
 
