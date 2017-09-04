@@ -16,9 +16,6 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := strike,BQS-5020,Strike,v3702,BQStrike
 
-PRODUCT_PACKAGES += \
-   libxlog
-
 # Audio
 PRODUCT_PACKAGES += \
     audio_policy.default \
@@ -228,10 +225,17 @@ PRODUCT_PACKAGES += \
     resize2fs \
     setup_fs
 
-## CM14 mtk symbols
+#PRODUCT_PACKAGES += \
+#   libxlog
+
+# Shim libraries
 PRODUCT_PACKAGES += \
-    libmtk_symbols \
-    libmtk_shyms
+    libmtkshim_log \
+    libmtkshim_audio \
+    libmtkshim_ui \
+    libmtkshim_omx \
+    libmtkshim_gps
+
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
 

@@ -139,9 +139,9 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 13474725888
 BOARD_CACHEIMAGE_PARTITION_SIZE := 402653184
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
-
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
+BLOCK_BASED_OTA := false
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 
@@ -183,9 +183,13 @@ BOARD_SEPOLICY_DIRS := $(LOCAL_PATH)/sepolicy
 # Use old sepolicy version
 POLICYVERS := 29
 
-BLOCK_BASED_OTA := false
-
-TARGET_LDPRELOAD += libxlog.so:libmtk_symbols.so # for symbols in mtkaudio.cpp + mtksymbols
+# Include needed symbols
+TARGET_INCLUDE_XLOG_SYMBOLS := true
+TARGET_INCLUDE_AUDIO_SYMBOLS := true
+TARGET_INCLUDE_GPS_SYMBOLS := true
+TARGET_INCLUDE_UI_SYMBOLS := true
+TARGET_INCLUDE_OMX_SYMBOLS := true
+include device/bq/strike/symbols.mk
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
