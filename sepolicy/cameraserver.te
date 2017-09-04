@@ -1,2 +1,0 @@
-allow cameraserver debugfs:file { write };
-allow cameraserver debugfs:file { open };

@@ -2,5 +2,5 @@ allow surfaceflinger pq_service:service_manager find;
 
 allow surfaceflinger debug_prop:property_service set;
 
-allow surfaceflinger debugfs:file { write };
-allow surfaceflinger debugfs:file { open };
+# allow surfaceflinger debugfs:file { write };
+# allow surfaceflinger debugfs:file { open };
