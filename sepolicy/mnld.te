@@ -1,5 +1,5 @@
 type mnld_exec, exec_type, file_type;
-type mnld, domain, domain_deprecated;
+type mnld, domain;
 
 init_daemon_domain(mnld)
 net_domain(mnld)
@@ -12,7 +12,7 @@ allow mnld gps_data_file:file create_file_perms;
 
 allow mnld agpsd_data_file:dir create_dir_perms;
 allow mnld agpsd_data_file:sock_file create_file_perms;
-allow mnld mtk_agpsd:unix_dgram_socket sendto;
+allow mnld agpsd:unix_dgram_socket sendto;
 
 allow mnld mnld_data_file:dir rw_dir_perms;
 allow mnld mnld_data_file:sock_file create_file_perms;
@@ -20,7 +20,6 @@ allow mnld mnld_data_file:file create_file_perms;
 
 allow mnld nvdata_file:dir rw_dir_perms;
 allow mnld nvdata_file:file create_file_perms;
-allow mnld nvdata_file:lnk_file r_file_perms;
 allow mnld nvram_device:blk_file rw_file_perms;
 
 allow mnld sysfs_gps_file:dir search;
@@ -40,7 +39,12 @@ allow mnld storage_file:lnk_file read;
 
 allow mnld mdlog_device:chr_file { read write };
 
-allow mnld block_device:dir search;
-
 file_type_auto_trans(mnld,system_data_file,mnld_data_file);
 file_type_auto_trans(mnld,apk_data_file,mnld_data_file);
+
+allow mnld block_device:blk_file { read write };
+allow mnld block_device:blk_file { open };
+
+
+
+

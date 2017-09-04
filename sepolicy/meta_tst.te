@@ -1,5 +1,5 @@
 type meta_tst_exec, exec_type, file_type;
-type meta_tst, domain, domain_deprecated;
+type meta_tst, domain;
 
 init_daemon_domain(meta_tst)
 
@@ -42,6 +42,6 @@ allow meta_tst node:tcp_socket node_bind;
 allow meta_tst sysfs:file write;
 
 allow meta_tst powerctl_prop:property_service set;
-unix_socket_connect(meta_tst, property, init)
+#unix_socket_connect(meta_tst, property, init)
 
 allow meta_tst self:capability { net_raw chown fsetid sys_nice net_admin fowner dac_override sys_admin };
