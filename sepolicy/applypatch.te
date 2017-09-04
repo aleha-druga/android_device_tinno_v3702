@@ -1,2 +1,0 @@
-allow install_recovery block_device:blk_file { read };
-allow install_recovery block_device:blk_file { open };
