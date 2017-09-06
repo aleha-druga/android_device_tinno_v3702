@@ -37,8 +37,7 @@ BOARD_USES_MTK_HARDWARE :=true
 
 ####################### Kernel  ##############################
 BOARD_KERNEL_CMDLINE := \
-    bootopt=64S3,32S1,32S1 \
-    androidboot.selinux=permissive
+    bootopt=64S3,32S1,32S1 
 
 BOARD_KERNEL_BASE := \
     0x80000000
@@ -189,6 +188,7 @@ TARGET_INCLUDE_AUDIO_SYMBOLS := true
 TARGET_INCLUDE_GPS_SYMBOLS := true
 TARGET_INCLUDE_UI_SYMBOLS := true
 TARGET_INCLUDE_OMX_SYMBOLS := true
+TARGET_INCLUDE_OTH_SYMBOLS := true
 include device/bq/strike/symbols.mk
 
 # RIL

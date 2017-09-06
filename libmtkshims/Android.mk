@@ -52,10 +52,22 @@ ifeq ($(TARGET_INCLUDE_GPS_SYMBOLS),true)
 
     LOCAL_SRC_FILES := \
         agps/icu53.c \
-        agps/ssl.c
+        agps/ssl.c \
+        agps/icu55.c
 
     LOCAL_SHARED_LIBRARIES := libicuuc libssl
     LOCAL_MODULE := libmtkshim_gps
+    LOCAL_MODULE_TAGS := optional
+
+    include $(BUILD_SHARED_LIBRARY)
+endif
+
+# other symbols
+ifeq ($(TARGET_INCLUDE_OTH_SYMBOLS),true)
+    include $(CLEAR_VARS)
+
+    LOCAL_SRC_FILES := binary.cpp
+    LOCAL_MODULE := libmtkshim_oth
     LOCAL_MODULE_TAGS := optional
 
     include $(BUILD_SHARED_LIBRARY)

@@ -24,10 +24,11 @@ allow ccci_mdinit ril_mux_report_case_prop:property_service set;
 allow ccci_mdinit mdlog_data_file:file r_file_perms;
 allow ccci_mdinit mdlog_data_file:dir r_dir_perms;
 
-#unix_socket_connect(ccci_mdinit, property, init)
-
-# allow ccci_mdinit block_device:blk_file { read write };
-# allow ccci_mdinit block_device:blk_file { open };
+# los 14
+allow ccci_mdinit block_device:blk_file open;
+allow ccci_mdinit block_device:blk_file read;
+allow ccci_mdinit block_device:blk_file write;
+allow ccci_mdinit ccci_mdinit:capability dac_override;
 
 
 

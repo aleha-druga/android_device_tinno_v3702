@@ -42,8 +42,13 @@ allow mnld mdlog_device:chr_file { read write };
 file_type_auto_trans(mnld,system_data_file,mnld_data_file);
 file_type_auto_trans(mnld,apk_data_file,mnld_data_file);
 
-# allow mnld block_device:blk_file { read write };
-# allow mnld block_device:blk_file { open };
+# los 14
+allow mnld block_device:blk_file open;
+allow mnld block_device:blk_file read;
+allow mnld block_device:blk_file write;
+allow mnld proc:file ioctl;
+allow mnld proc:file open;
+allow mnld proc:file read;
 
 
 

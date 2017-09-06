@@ -225,17 +225,14 @@ PRODUCT_PACKAGES += \
     resize2fs \
     setup_fs
 
-#PRODUCT_PACKAGES += \
-#   libxlog
-
 # Shim libraries
 PRODUCT_PACKAGES += \
     libmtkshim_log \
     libmtkshim_audio \
     libmtkshim_ui \
     libmtkshim_omx \
-    libmtkshim_gps
-
+    libmtkshim_gps \
+    libmtkshim_oth
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
 
