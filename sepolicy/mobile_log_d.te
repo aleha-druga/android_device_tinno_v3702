@@ -28,3 +28,5 @@ allow mobile_log_d logmisc_data_file:dir create_dir_perms;
 allow mobile_log_d rootfs:file getattr;
 allow mobile_log_d rootfs:file open;
 allow mobile_log_d rootfs:file read;
+allow logd unlabeled:dir search;
+allow mobile_log_d security_file:dir search;

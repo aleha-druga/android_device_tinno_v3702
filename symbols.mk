@@ -15,5 +15,5 @@ ifeq ($(TARGET_INCLUDE_GPS_SYMBOLS),true)
 LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/bin/mtk_agpsd|libmtkshim_gps.so
 endif
 ifeq ($(TARGET_INCLUDE_OTH_SYMBOLS),true)
-LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/lib/libmedia.so|libmtkshim_oth.so
+LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/lib/libmedia.so|libmtkshim_oth.so:/system/lib/libstagefright.so|libmtkshim_oth.so
 endif
