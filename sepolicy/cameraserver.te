@@ -1,4 +1,4 @@
-type cameraserver_exec , exec_type, file_type;
+type cameraserver, exec_type, file_type;
 type cameraserver ,domain;
 
 # los 14
