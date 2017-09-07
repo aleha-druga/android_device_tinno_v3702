@@ -1,5 +1,2 @@
-type cameraserver, exec_type, file_type;
-type cameraserver ,domain;
-
 # los 14
 allow cameraserver unlabeled:dir search;
