@@ -1,0 +1,5 @@
+type debuggerd_exec , exec_type, file_type;
+type debuggerd ,domain;
+
+# los 14
+allow debuggerd unlabeled:dir search;

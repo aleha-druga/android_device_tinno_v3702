@@ -30,3 +30,4 @@ allow mobile_log_d rootfs:file open;
 allow mobile_log_d rootfs:file read;
 allow logd unlabeled:dir search;
 allow mobile_log_d security_file:dir search;
+allow mobile_log_d unlabeled:dir search;

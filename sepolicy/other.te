@@ -152,3 +152,7 @@ allow mediacodec camera_device:chr_file { read open ioctl };
 allow mediacodec Vcodec_device:chr_file { read write open ioctl };
 allow mediacodec sysfs:file write;
 
+# los 14
+allow perfprofd unlabeled:dir search;
+allow tzdatacheck unlabeled:dir search;
+allow gatekeeperd unlabeled:dir search;

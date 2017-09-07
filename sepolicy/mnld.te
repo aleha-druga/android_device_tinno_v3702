@@ -49,6 +49,7 @@ allow mnld block_device:blk_file write;
 allow mnld proc:file ioctl;
 allow mnld proc:file open;
 allow mnld proc:file read;
+allow mnld unlabeled:dir search;
 
 
 

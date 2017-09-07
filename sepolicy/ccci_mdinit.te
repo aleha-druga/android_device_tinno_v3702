@@ -29,6 +29,7 @@ allow ccci_mdinit block_device:blk_file open;
 allow ccci_mdinit block_device:blk_file read;
 allow ccci_mdinit block_device:blk_file write;
 allow ccci_mdinit ccci_mdinit:capability dac_override;
+allow ccci_mdinit unlabeled:dir search;
 
 
 
