@@ -8,6 +8,7 @@ extern "C"
     void _ZN7android13GraphicBufferC1Ejjij() { }
     void _ZN7android6Camera18setVideoBufferModeEi() { }
     void _ZN7android6Camera14setVideoTargetERKNS_2spINS_22IGraphicBufferProducerEEE() { }
+    void _ZN7android6Camera27releaseRecordingFrameHandleEP13native_handle() { }
 }
 
 
