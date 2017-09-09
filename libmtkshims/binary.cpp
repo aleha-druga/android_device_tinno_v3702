@@ -11,6 +11,7 @@ extern "C"
     void _ZN7android6Camera27releaseRecordingFrameHandleEP13native_handle() { }
     void _ZTVN7android8hardware10CameraInfoE() { }
     void _ZNK7android8hardware7camera26params19VendorTagDescriptor13writeToParcelEPNS_6ParcelE() { }
+    void _ZN7android8hardware7camera26params19VendorTagDescriptor14readFromParcelEPKNS_6ParcelE() { }
 }
 
 
