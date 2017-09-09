@@ -17,6 +17,7 @@ extern "C"
     void _ZN7android8hardware14ICameraService11asInterfaceERKNS_2spINS_7IBinderEEE() { }
     void _ZN7android8hardware7camera26params19VendorTagDescriptorC2Ev() { }
     void _ZN7android14CameraMetadata14getTagFromNameEPKcPKNS_19VendorTagDescriptorEPj() { }
+    void _ZNK7android8hardware7camera26params19VendorTagDescriptor11getTagCountEv() { }
 }
 
 
