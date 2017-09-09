@@ -1,6 +1,6 @@
 # mt6580 platform boardconfig
 LOCAL_PATH := device/bq/strike
--include vendor/bq/strike/BoardConfigVendor.mk
+-include device/bq/strike/libraries/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -38,15 +38,31 @@ BOARD_USES_MTK_AUDIO := true
 BOARD_USES_MTK_HARDWARE :=true
 
 ####################### Kernel  ##############################
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32S1,32S1 androidboot.selinux=permissive
-BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --base 0x80000000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --second_offset 0x80f00000 --tags_offset 0x0e000000 --board R09
+BOARD_KERNEL_CMDLINE := \
+    bootopt=64S3,32S1,32S1 \
+    androidboot.selinux=permissive
+    
+BOARD_KERNEL_BASE := \
+    0x80000000
+    
+BOARD_KERNEL_PAGESIZE := \
+    2048
+    
+BOARD_MKBOOTIMG_ARGS := \
+    --base 0x80000000 \
+    --pagesize 2048 \
+    --kernel_offset 0x00008000 \
+    --ramdisk_offset 0x04000000 \
+    --second_offset 0x80f00000 \
+    --tags_offset 0x0e000000 \
+    --board R09
+    
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+
 # Hack for build
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 #################### Source kernel #################################
-#TARGET_KERNEL_SOURCE := device/bq/strike/kernel-3.18.19
+#TARGET_KERNEL_SOURCE := kernel/bq/strike
 #TARGET_KERNEL_CONFIG := v3702_defconfig
 #BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 #TARGET_NO_KERNEL := false
@@ -128,7 +144,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true

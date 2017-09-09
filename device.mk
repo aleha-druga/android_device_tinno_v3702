@@ -3,7 +3,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 $(call inherit-product, device/bq/strike/vendor/copyfiles.mk)
-$(call inherit-product, vendor/bq/strike/strike-vendor-blobs.mk)
+$(call inherit-product, device/bq/strike/libraries/strike-vendor-blobs.mk)
 
 LOCAL_PATH := device/bq/strike
 
@@ -28,6 +28,7 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     tinymix \
     libtinyalsa
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_device.xml:system/etc/audio_device.xml \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
@@ -35,26 +36,22 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     audio.a2dp.default
+
 PRODUCT_PACKAGES += \
     libbt-vendor
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/bluetooth/auto_pair_devlist.conf:system/etc/bluetooth/auto_pair_devlist.conf \
 	$(LOCAL_PATH)/configs/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
 	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.debug:system/etc/bluetooth/bt_stack.conf.debug \
-	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/etc/bluetooth/bt_stack.conf.sqc \
-	$(LOCAL_PATH)/configs/permissions/platform.xml:system/etc/permissions/platform.xml
+	$(LOCAL_PATH)/configs/bluetooth/bt_stack.conf.sqc:system/etc/bluetooth/bt_stack.conf.sqc 
 
 # Keyboard layout
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
      $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
      $(LOCAL_PATH)/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl
-
-PRODUCT_PACKAGES += libmt6580
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=MT6580
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -186,7 +183,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril.config=signalstrength  \
     persist.call_recording.enabled=true \
     persist.call_recording.src=1 \
-    persist.debug.wfd.enable=1
+    persist.debug.wfd.enable=1 \
+    ro.product.locale=ru-RU \
+    ro.telephony.ril_class=MT6580
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -196,8 +195,6 @@ PRODUCT_PACKAGES += \
     libnl_2 \
     libtinyxml
     
-# Browser
-
 # FMRadio
 PRODUCT_PACKAGES += \
     FMRadio \
@@ -213,7 +210,8 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.mt6580
+    lights.mt6580 \
+    libmt6580
 
 # Sensor Calibration
 PRODUCT_PACKAGES += libem_sensor_jni
