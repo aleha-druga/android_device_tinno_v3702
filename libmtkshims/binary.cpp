@@ -13,6 +13,7 @@ extern "C"
     void _ZNK7android8hardware7camera26params19VendorTagDescriptor13writeToParcelEPNS_6ParcelE() { }
     void _ZN7android8hardware7camera26params19VendorTagDescriptor14readFromParcelEPKNS_6ParcelE() { }
     void _ZN7android10CameraBaseINS_6CameraENS_12CameraTraitsIS1_EEE13getCameraInfoEiPNS_8hardware10CameraInfoE() { }
+    void _ZN7android8hardware7camera26params19VendorTagDescriptorD2Ev() { }
 }
 
 
