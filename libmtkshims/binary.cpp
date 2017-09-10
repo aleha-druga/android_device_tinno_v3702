@@ -21,6 +21,7 @@ extern "C"
     void _ZNK7android8hardware7camera26params19VendorTagDescriptor11getTagArrayEPj() { }
     void _ZNK7android8hardware7camera26params19VendorTagDescriptor14getSectionNameEj() { }
     void _ZNK7android8hardware7camera26params19VendorTagDescriptor10getTagNameEj() { }
+    void _ZNK7android8hardware7camera26params19VendorTagDescriptor10getTagTypeEj() { }
 }
 
 
