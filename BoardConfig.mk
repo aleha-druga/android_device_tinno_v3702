@@ -37,7 +37,8 @@ BOARD_USES_MTK_HARDWARE :=true
 
 ####################### Kernel  ##############################
 BOARD_KERNEL_CMDLINE := \
-    bootopt=64S3,32S1,32S1 
+    bootopt=64S3,32S1,32S1 \
+    androidboot.selinux=permissive
 
 BOARD_KERNEL_BASE := \
     0x80000000
