@@ -16,6 +16,8 @@ import /init.cm.rc
 import /init.trace.rc
 import /init.performance.rc
 import /init.modem.rc
+import /init.recovery.mt6580.rc
+import /init.recovery.vold_decrypt.rc
 
 on early-init
     # Set init and its forked children's oom_adj.
