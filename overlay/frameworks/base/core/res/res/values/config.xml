@@ -93,7 +93,7 @@
     <bool name="config_wifi_background_scan_support">true</bool>
     
     <!-- Disable IpReachability monitor -->
-    <bool name="config_wifi_ipreachability_monitor">false</bool>
+    <add-resource type="bool" name="config_wifi_ipreachability_monitor">false</add-resource>
 
     <!-- Wifi DualBand -->
     <bool name="config_wifi_dual_band_support">true</bool>    
@@ -105,7 +105,7 @@
     <bool name="config_intrusiveBatteryLed">true</bool>
 
     <!-- Does the notification LED support multiple colors? Used to decide if the user can change the colors -->
-    <bool name="config_multiColorNotificationLed">true</bool>
+    <add-resource type="bool" name="config_multiColorNotificationLed">true</add-resource>
 
     <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
     <bool name="config_multiColorBatteryLed">true</bool>
@@ -325,7 +325,7 @@
             64 - Volume rocker
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareWakeKeys">64</integer>
+    <add-resource type="integer" name="config_deviceHardwareWakeKeys">64</add-resource>
 
     <!-- Is the device capable of hot swapping an UICC Card -->
     <bool name="config_hotswapCapable">true</bool>
