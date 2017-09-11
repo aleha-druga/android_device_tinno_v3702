@@ -185,7 +185,9 @@ BOARD_SEPOLICY_DIRS := \
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 
-#
-TARGET_LDPRELOAD += libxlog.so:libmtk_symbols.so
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
+
+# Include needed symbols
+include device/bq/strike/symbols.mk
+TARGET_INCLUDE_XLOG_SYMBOLS := true
 

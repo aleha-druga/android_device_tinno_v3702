@@ -16,9 +16,6 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := strike,BQS-5020,Strike,v3702,BQStrike
 
-PRODUCT_PACKAGES += \
-   libxlog
-
 # Audio
 PRODUCT_PACKAGES += \
     audio_policy.default \
@@ -67,9 +64,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
     $(LOCAL_PATH)/rootdir/init.xlog.rc:root/init.xlog.rc \
     $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
-    $(LOCAL_PATH)/rootdir/init.performance.rc:root/init.performance.rc \
     $(LOCAL_PATH)/rootdir/init.nvdata.rc:root/init.nvdata.rc \
     $(LOCAL_PATH)/rootdir/ueventd.mt6580.rc:root/ueventd.mt6580.rc
 
@@ -167,7 +161,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml \
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     ro.secure=0 \
     ro.allow.mock.location=1 \
@@ -225,6 +219,10 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     resize2fs \
     setup_fs
+
+# Shim libraries
+PRODUCT_PACKAGES += \
+    libmtkshim_log 
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
 
