@@ -178,9 +178,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 #TW_EXTRA_LANGUAGES := true
 #TW_BUILD_ZH_CN_SUPPORT := true
 
-# Malloc implementation
-MALLOC_IMPL := dlmalloc
-
 # SELinux
 BOARD_SEPOLICY_DIRS := \
        device/bq/strike/sepolicy
