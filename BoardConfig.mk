@@ -178,6 +178,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 #TW_EXTRA_LANGUAGES := true
 #TW_BUILD_ZH_CN_SUPPORT := true
 
+# Malloc implementation
+MALLOC_IMPL := dlmalloc
+
 # SELinux
 BOARD_SEPOLICY_DIRS := \
        device/bq/strike/sepolicy
@@ -188,4 +191,3 @@ BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 #
 TARGET_LDPRELOAD += libxlog.so:libmtk_symbols.so
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
-
