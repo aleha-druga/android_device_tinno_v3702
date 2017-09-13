@@ -196,9 +196,14 @@ PRODUCT_PACKAGES += \
     libtinyxml
     
 # FMRadio
+#PRODUCT_PACKAGES += \
+#    FMRadio \
+#    libmtkplayer
+
+# FM Radio
 PRODUCT_PACKAGES += \
-    FMRadio \
-    libmtkplayer
+	FMRadio \
+	libfmjni
 
 # Camera
 PRODUCT_PACKAGES += \
