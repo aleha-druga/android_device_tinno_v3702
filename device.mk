@@ -2,10 +2,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
-$(call inherit-product, device/bq/strike/vendor/copyfiles.mk)
-$(call inherit-product, device/bq/strike/libraries/strike-vendor-blobs.mk)
+$(call inherit-product, device/tinno/v3702/vendor/copyfiles.mk)
+$(call inherit-product, device/tinno/v3702/libraries/v3702-vendor-blobs.mk)
 
-LOCAL_PATH := device/bq/strike
+LOCAL_PATH := device/tinno/v3702
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -14,7 +14,7 @@ PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := strike,BQS-5020,Strike,v3702,BQStrike
+TARGET_OTA_ASSERT_DEVICE := v3702,BQS-5020,Strike,v3702,BQStrike
 
 PRODUCT_PACKAGES += \
    libxlog
@@ -167,7 +167,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml \
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     ro.secure=0 \
     ro.allow.mock.location=1 \
@@ -186,6 +186,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     ro.product.locale=ru-RU \
     ro.telephony.ril_class=MT6580
+    
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.product.board=BQS-5020
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -196,14 +199,9 @@ PRODUCT_PACKAGES += \
     libtinyxml
     
 # FMRadio
-#PRODUCT_PACKAGES += \
-#    FMRadio \
-#    libmtkplayer
-
-# FM Radio
 PRODUCT_PACKAGES += \
-	FMRadio \
-	libfmjni
+    FMRadio \
+    libmtkplayer
 
 # Camera
 PRODUCT_PACKAGES += \

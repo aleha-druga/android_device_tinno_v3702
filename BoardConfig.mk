@@ -1,6 +1,6 @@
 # mt6580 platform boardconfig
-LOCAL_PATH := device/bq/strike
--include device/bq/strike/libraries/BoardConfigVendor.mk
+LOCAL_PATH := device/tinno/v3702
+-include device/tinno/v3702/libraries/BoardConfigVendor.mk
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -62,7 +62,7 @@ TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 # Hack for build
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 #################### Source kernel #################################
-#TARGET_KERNEL_SOURCE := kernel/bq/strike
+#TARGET_KERNEL_SOURCE := kernel/tinno/v3702
 #TARGET_KERNEL_CONFIG := v3702_defconfig
 #BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 #TARGET_NO_KERNEL := false
@@ -158,8 +158,8 @@ TARGET_USERIMAGES_USE_EXT4 := true
 #TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 #BOARD_HAS_NO_SELECT_BUTTON := true
 #TW_NO_REBOOT_BOOTLOADER := true
-#TARGET_RECOVERY_FSTAB := device/bq/strike/recovery/root/etc/recovery.fstab
-#TARGET_RECOVERY_DEVICE_DIRS += deviсe/bq/strike
+#TARGET_RECOVERY_FSTAB := device/tinno/v3702/recovery/root/etc/recovery.fstab
+#TARGET_RECOVERY_DEVICE_DIRS += deviсe/tinno/v3702
 #TW_THEME := portrait_hdpi
 #RECOVERY_GRAPHICS_USE_LINELENGTH := true
 #TW_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
@@ -180,7 +180,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS := \
-       device/bq/strike/sepolicy
+       device/tinno/v3702/sepolicy
        
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril

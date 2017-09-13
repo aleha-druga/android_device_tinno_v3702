@@ -17,8 +17,8 @@ echo next
 
 echo BQ
 cd -
-cp bq.patch ../../../../bq.patch
+cp tinno.patch ../../../../tinno.patch
 cd ../../../..
-patch -p1 <bq.patch
-rm bq.patch
+patch -p1 <tinno.patch
+rm tinno.patch
 echo END

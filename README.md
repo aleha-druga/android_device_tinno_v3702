@@ -1,1 +1,1 @@
-# Android_device_bq_strike
+# Android_device_tinno_v3702

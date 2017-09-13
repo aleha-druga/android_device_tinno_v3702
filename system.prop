@@ -1,6 +1,6 @@
 #
 #
-# system.prop for bq strike
+# system.prop for tinno v3702
 #
 
 rild.libpath=/system/lib/mtk-ril.so
@@ -68,7 +68,7 @@ persist.sys.button_jack_switch=0
 
 persist.tone_relative_volume=100
 ro.mediatek.chip_ver=S01
-ro.mediatek.version.release=bq-strike-Android6.0-20160813
+ro.mediatek.version.release=tinno-v3702-Android6.0-20160813
 ro.mediatek.platform=MT6580
 ro.telephony.sim.count=2
 persist.radio.default.sim=0

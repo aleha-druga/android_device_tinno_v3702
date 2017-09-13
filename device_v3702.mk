@@ -2,17 +2,17 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/bq/strike/device.mk)
+$(call inherit-product, device/tinno/v3702/device.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := strike
+PRODUCT_RELEASE_NAME := BQS-5020
 
 EXTENDED_FONT_FOOTPRINT := true
 
-PRODUCT_DEVICE := strike
-PRODUCT_NAME := full_strike
+PRODUCT_DEVICE := v3702
+PRODUCT_NAME := full_v3702
 PRODUCT_BRAND := BQ
-PRODUCT_MODEL := BQStrike
+PRODUCT_MODEL := BQS-5020
 PRODUCT_MANUFACTURER := BQ
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
