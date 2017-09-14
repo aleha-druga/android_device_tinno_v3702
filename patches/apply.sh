@@ -6,6 +6,5 @@ cd ../../system/core
 git apply -v ../../device/tinno/v3702/patches/system_core.patch
 cd ../..
 git apply -v ./device/tinno/v3702/patches/tinno.patch
-cd ../..
 git apply -v ./device/tinno/v3702/patches/mtp.patch
 
