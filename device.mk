@@ -187,7 +187,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.locale=ru-RU \
     ro.telephony.ril_class=MT6580
     
-PRODUCT_PROPERTY_OVERRIDES := \
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.board=BQS-5020 \
     ro.config.low_ram=true \
 	persist.sys.force_highendgfx=true
