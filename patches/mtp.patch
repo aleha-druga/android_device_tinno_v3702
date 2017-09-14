@@ -1,0 +1,63 @@
+From 593ee32a0ba092b91b9761e737477512e076ee6f Mon Sep 17 00:00:00 2001
+From: aleha-druga <aleha.druga@gmail.com>
+Date: Thu, 14 Sep 2017 21:39:21 +0500
+Subject: [PATCH] enable_mtp
+
+---
+ .../usb/java/com/android/server/usb/UsbDeviceManager.java    | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/frameworks/base/services/usb/java/com/android/server/usb/UsbDeviceManager.java b/frameworks/base/services/usb/java/com/android/server/usb/UsbDeviceManager.java
+index 2886ce6..8fae28a 100644
+--- a/frameworks/base/services/usb/java/com/android/server/usb/UsbDeviceManager.java
++++ b/frameworks/base/services/usb/java/com/android/server/usb/UsbDeviceManager.java
+@@ -78,7 +78,7 @@ import java.util.Scanner;
+ public class UsbDeviceManager {
+ 
+     private static final String TAG = "UsbDeviceManager";
+-    private static final boolean DEBUG = false;
++    private static final boolean DEBUG = true;
+ 
+     /**
+      * The persistent property which stores whether adb is enabled or not.
+@@ -335,7 +335,7 @@ public class UsbDeviceManager {
+         private boolean mConnected;
+         private boolean mHostConnected;
+         private boolean mConfigured;
+-        private boolean mUsbDataUnlocked;
++        private boolean mUsbDataUnlocked = true;
+         private String mCurrentFunctions;
+         private boolean mCurrentFunctionsApplied;
+         private UsbAccessory mCurrentAccessory;
+@@ -459,8 +459,8 @@ public class UsbDeviceManager {
+         private void setUsbDataUnlocked(boolean enable) {
+             if (DEBUG) Slog.d(TAG, "setUsbDataUnlocked: " + enable);
+             mUsbDataUnlocked = enable;
+-            updateUsbNotification();
+-            updateUsbStateBroadcast();
++            /*updateUsbNotification();*/
++            /*updateUsbStateBroadcastIfNeeded();*/
+             setEnabledFunctions(mCurrentFunctions, true);
+         }
+ 
+@@ -697,7 +697,7 @@ public class UsbDeviceManager {
+                     mConfigured = (msg.arg2 == 1);
+                     if (!mConnected) {
+                         // When a disconnect occurs, relock access to sensitive user data
+-                        mUsbDataUnlocked = false;
++//                        mUsbDataUnlocked = false;
+                     }
+                     updateUsbNotification();
+                     updateAdbNotification();
+@@ -706,7 +706,7 @@ public class UsbDeviceManager {
+                         updateCurrentAccessory();
+                     } else if (!mConnected) {
+                         // restore defaults when USB is disconnected
+-                        setEnabledFunctions(null, false);
++//                        setEnabledFunctions(null, false);
+                     }
+                     if (mBootCompleted) {
+                         updateUsbStateBroadcast();
+-- 
+2.7.4
+
