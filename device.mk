@@ -188,7 +188,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=MT6580
     
 PRODUCT_PROPERTY_OVERRIDES := \
-    ro.product.board=BQS-5020
+    ro.product.board=BQS-5020 \
+    ro.config.low_ram=true \
+	persist.sys.force_highendgfx=true
+
 
 PRODUCT_PACKAGES += \
     librs_jni \
