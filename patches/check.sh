@@ -9,7 +9,7 @@ cd bionic
 git apply -v --check ../device/bq/strike/patches/0002-Apply-LIBC-version-to-__pthread_gettid.patch
 cd ..
 cd system/sepolicy
-git apply -v --check ../../device/bq/strike/patches/0003-Revert-back-to-policy-version-29.patch
+git apply -v --check ../../device/bq/strike/patches/sepolicy.patch
 cd ../..
 cd frameworks/av
 git apply -v --check ../../device/bq/strike/patches/0006-fix-access-wvm-to-ReadOptions.patch
