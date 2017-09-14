@@ -183,6 +183,9 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
 else
     BOARD_SEPOLICY_DIRS := device/tinno/v3702/sepolicy
 endif
+
+# Malloc implementation
+MALLOC_IMPL := dlmalloc
        
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
