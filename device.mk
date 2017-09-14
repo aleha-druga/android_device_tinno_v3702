@@ -228,6 +228,11 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     resize2fs \
     setup_fs
+    
+# custom apps
+PRODUCT_PACKAGES += \
+    Launcher \
+    Gboard    
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=8
 
