@@ -7,7 +7,7 @@ DEXPREOPT := false
 KERNEL_SOURCE := false
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
+TARGET_SYSTEM_PROP += device/bq/strike/system.prop
 USE_CAMERA_STUB := true
 TARGET_PROVIDES_INIT_RC := true
 
@@ -17,8 +17,6 @@ TARGET_BOARD_PLATFORM := mt6580
 TARGET_NO_BOOTLOADER := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_NO_FACTORYIMAGE := true
-
-TARGET_LDPRELOAD += libxlog.so
 
 # CPU
 TARGET_ARCH := arm
@@ -99,7 +97,7 @@ USE_MINIKIN := true
 # Charger
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
-# font
+# Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
