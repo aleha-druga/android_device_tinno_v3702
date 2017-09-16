@@ -2,6 +2,10 @@
 LOCAL_PATH := device/tinno/v3702
 -include device/tinno/v3702/libraries/BoardConfigVendor.mk
 
+# Config
+DEXPREOPT := false
+KERNEL_SOURCE := false
+
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 USE_CAMERA_STUB := true
@@ -37,7 +41,7 @@ BOARD_CONNECTIVITY_VENDOR := MediaTek
 BOARD_USES_MTK_AUDIO := true
 BOARD_USES_MTK_HARDWARE :=true
 
-####################### Kernel  ##############################
+# Boot
 BOARD_KERNEL_CMDLINE := \
     bootopt=64S3,32S1,32S1 \
     androidboot.selinux=permissive
@@ -56,17 +60,16 @@ BOARD_MKBOOTIMG_ARGS := \
     --second_offset 0x80f00000 \
     --tags_offset 0x0e000000 \
     --board R09
-    
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
-TARGET_NO_KERNEL := true
-# Hack for build
-$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
-#################### Source kernel #################################
-#TARGET_KERNEL_SOURCE := kernel/tinno/v3702
-#TARGET_KERNEL_CONFIG := v3702_defconfig
-#BOARD_KERNEL_IMAGE_NAME := zImage-dtb
-#TARGET_NO_KERNEL := false
-#####################################################################
+
+ifeq ($(KERNEL_SOURCE),true)
+    TARGET_KERNEL_SOURCE := kernel/tinno/v3702
+    TARGET_KERNEL_CONFIG := v3702_defconfig
+    BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+    TARGET_NO_KERNEL := false
+else
+    TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+    $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+endif
 
 TARGET_KMODULES := true
 
@@ -96,11 +99,8 @@ USE_MINIKIN := true
 # Charger
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
-# Fonts
-ifeq ($(TARGET_PRODUCT),sdk)
-  # include an expanded selection of fonts for the SDK.
-  EXTENDED_FONT_FOOTPRINT := true
-endif
+# font
+EXTENDED_FONT_FOOTPRINT := true
 
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
@@ -140,7 +140,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 13474725888 # 13.47
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 13474725888 # 13.47Gb
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 20971520 # 20,97 Mb
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1879048192  # 1.75 GB
 BOARD_CACHEIMAGE_PARTITION_SIZE := 402653184 # 402.65 Mb
@@ -187,11 +187,12 @@ else
     BOARD_SEPOLICY_DIRS := device/tinno/v3702/sepolicy
 endif
 
-ifeq ($(HOST_OS),linux)
-  ifeq ($(WITH_DEXPREOPT),)
+ifeq ($(DEXPREOPT),true)
     WITH_DEXPREOPT := true
-  endif
+else
+    WITH_DEXPREOPT := false    
 endif
+
 
 # Malloc implementation
 MALLOC_IMPL := dlmalloc
