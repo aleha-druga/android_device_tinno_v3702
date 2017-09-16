@@ -58,7 +58,7 @@ BOARD_MKBOOTIMG_ARGS := \
     --board R09
     
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
-
+TARGET_NO_KERNEL := true
 # Hack for build
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 #################### Source kernel #################################
@@ -69,6 +69,7 @@ $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 #####################################################################
 
 TARGET_KMODULES := true
+
 # Disable memcpy opt (for audio libraries)
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
 
@@ -96,7 +97,10 @@ USE_MINIKIN := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # Fonts
-EXTENDED_FONT_FOOTPRINT := true
+ifeq ($(TARGET_PRODUCT),sdk)
+  # include an expanded selection of fonts for the SDK.
+  EXTENDED_FONT_FOOTPRINT := true
+endif
 
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
@@ -133,17 +137,17 @@ BLOCK_BASED_OTA := false
 
 # make_ext4fs requires numbers in dec format
 TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_BOOTIMAGE_PARTITION_SIZE := 20971520
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 20971520
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1610612736
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 13474725888
-BOARD_CACHEIMAGE_PARTITION_SIZE := 402653184
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_FLASH_BLOCK_SIZE := 131072
-
 BOARD_HAS_LARGE_FILESYSTEM := true
-TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 13474725888 # 13.47
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 20971520 # 20,97 Mb
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1879048192  # 1.75 GB
+BOARD_CACHEIMAGE_PARTITION_SIZE := 402653184 # 402.65 Mb
+BOARD_BOOTIMAGE_PARTITION_SIZE := 20971520 # 20,97 Mb
+BOARD_FLASH_BLOCK_SIZE := 131072 # 131.072 Kb
 
+# lun file
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -152,7 +156,6 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
-TARGET_USERIMAGES_USE_EXT4 := true
 
 # TWRP
 #TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
@@ -182,6 +185,12 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
     BOARD_SEPOLICY_DIRS := device/tinno/v3702/sepolicy_user
 else
     BOARD_SEPOLICY_DIRS := device/tinno/v3702/sepolicy
+endif
+
+ifeq ($(HOST_OS),linux)
+  ifeq ($(WITH_DEXPREOPT),)
+    WITH_DEXPREOPT := true
+  endif
 endif
 
 # Malloc implementation

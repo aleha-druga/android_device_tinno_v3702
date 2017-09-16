@@ -5,7 +5,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/tinno/v3702/device.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := BQS-5020
+PRODUCT_RELEASE_NAME := v3702
 
 EXTENDED_FONT_FOOTPRINT := true
 
