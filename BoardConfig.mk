@@ -7,7 +7,7 @@ DEXPREOPT := false
 KERNEL_SOURCE := false
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-TARGET_SYSTEM_PROP += device/bq/strike/system.prop
+TARGET_SYSTEM_PROP += device/tinno/v3702/system.prop
 USE_CAMERA_STUB := true
 TARGET_PROVIDES_INIT_RC := true
 
