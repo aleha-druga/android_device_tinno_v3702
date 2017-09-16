@@ -20,10 +20,7 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-#for var in eng user userdebug; do
-#  add_lunch_combo lineage_v3702-$var
-#done
-
 for var in eng user userdebug; do
-  add_lunch_combo BQS-5020-$var
+  add_lunch_combo lineage_v3702-$var
 done
+
