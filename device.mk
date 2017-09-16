@@ -10,8 +10,8 @@ LOCAL_PATH := device/tinno/v3702
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := v3702,BQS-5020,Strike,v3702,BQStrike
@@ -188,7 +188,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=MT6580
     
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.board=BQS-5020 \
     ro.config.low_ram=true \
 	persist.sys.force_highendgfx=true
 
