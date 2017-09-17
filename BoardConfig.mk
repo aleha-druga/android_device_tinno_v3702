@@ -2,10 +2,6 @@
 LOCAL_PATH := device/tinno/v3702
 -include device/tinno/v3702/libraries/BoardConfigVendor.mk
 
-# Config
-DEXPREOPT := false # deodex? (false)
-KERNEL_SOURCE := false # prebuild kernel? (false)
-
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 USE_CAMERA_STUB := true
@@ -17,10 +13,6 @@ TARGET_BOARD_PLATFORM := mt6580
 TARGET_NO_BOOTLOADER := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_NO_FACTORYIMAGE := true
-
-#
-TARGET_NO_USERIMAGES := true
-TARGET_NO_USERDATAIMAGE := true
 
 # CPU
 TARGET_ARCH := arm
@@ -63,15 +55,15 @@ BOARD_MKBOOTIMG_ARGS := \
     --tags_offset 0x0e000000 \
     --board R09
 
-ifeq ($(KERNEL_SOURCE),true)
-    TARGET_KERNEL_SOURCE := kernel/tinno/v3702
-    TARGET_KERNEL_CONFIG := v3702_defconfig
-    BOARD_KERNEL_IMAGE_NAME := zImage-dtb
-    TARGET_NO_KERNEL := false
-else
-    TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
-    $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
-endif
+
+#TARGET_KERNEL_SOURCE := kernel/tinno/v3702
+#TARGET_KERNEL_CONFIG := v3702_defconfig
+#BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+#TARGET_NO_KERNEL := false
+
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
 
 TARGET_KMODULES := true
 
@@ -187,13 +179,6 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
 else
     BOARD_SEPOLICY_DIRS := device/tinno/v3702/sepolicy
 endif
-
-ifeq ($(DEXPREOPT),true)
-    WITH_DEXPREOPT := true
-else
-    WITH_DEXPREOPT := false    
-endif
-
 
 # Malloc implementation
 MALLOC_IMPL := dlmalloc
