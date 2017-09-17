@@ -175,8 +175,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.zygote=zygote64_32 \
     camera.disable_zsl_mode=1 \
     ro.mount.fs=EXT4 \
-    persist.service.acm.enable=0 \
-    persist.sys.usb.config=mtp
+    persist.service.acm.enable=1 \
+    persist.sys.usb.config=mtp,adb
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.android.checkjni=0 \
@@ -184,14 +184,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.call_recording.enabled=true \
     persist.call_recording.src=1 \
     persist.debug.wfd.enable=1 \
-    ro.product.locale=ru-RU \
-    ro.telephony.ril_class=MT6580
-    
-PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=MT6580 \
     ro.config.low_ram=true \
 	persist.sys.force_highendgfx=true
-
-
+    
 PRODUCT_PACKAGES += \
     librs_jni \
     com.android.future.usb.accessory
