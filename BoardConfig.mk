@@ -55,15 +55,16 @@ BOARD_MKBOOTIMG_ARGS := \
     --tags_offset 0x0e000000 \
     --board R09
 
-TARGET_NO_KERNEL := true
+NEW_KERNEL := false
 
-ifeq ($(TARGET_NO_KERNEL),true)
+ifeq ($(NEW_KERNEL),false)
     TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
     $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
 else
     TARGET_KERNEL_SOURCE := kernel/tinno/v3702
     TARGET_KERNEL_CONFIG := v3702_defconfig
     BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+    TARGET_NO_KERNEL := false
 endif
 
 TARGET_KMODULES := true
