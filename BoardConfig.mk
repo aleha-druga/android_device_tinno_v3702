@@ -181,7 +181,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_SEPOLICY_DIRS := $(LOCAL_PATH)/sepolicy
 
 # Use old sepolicy version
-POLICYVERS := 29
+# POLICYVERS := 29
 
 # Include needed symbols
 TARGET_INCLUDE_XLOG_SYMBOLS := true
