@@ -213,8 +213,10 @@ PRODUCT_PACKAGES += \
     lights.mt6580
 
 # Sensor Calibration
-PRODUCT_PACKAGES += libem_sensor_jni
-
+PRODUCT_PACKAGES += \
+    libem_sensor_jni
+    CIP_MD_SBP
+    
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck \
